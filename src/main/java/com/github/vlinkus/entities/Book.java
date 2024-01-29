@@ -24,7 +24,6 @@ public class Book {
     private Integer amount;
     @ManyToOne
     @JoinColumn(name = "authorId")
-    @JsonIgnore
     private Author author;
 
     public Book(String isbn, String bookName, Author author, String bookCategory, String publicationDate, Integer amount) {

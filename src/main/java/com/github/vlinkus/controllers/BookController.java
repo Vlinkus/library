@@ -26,9 +26,14 @@ public class BookController {
         return service.getBooks();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Book getBookById(@PathVariable Long id){
         return service.getBookById(id);
+    }
+
+    @GetMapping("/isbn/{isbn}")
+    public List<Book> getBookByIsbn(@PathVariable String isbn){
+        return service.findBooksByISBN(isbn);
     }
 
     @DeleteMapping("/{id}")
@@ -42,8 +47,9 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public BookResponseEntity updateBook(@PathVariable Long pathId, @RequestBody Book book){
-        return service.updateBook(pathId, book);
+    public BookResponseEntity updateBook(@PathVariable Long id, @RequestBody Book book){
+        System.out.println(book.toString());
+        return service.updateBook(id, book);
     }
 
 }
